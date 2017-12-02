@@ -1,0 +1,11 @@
+D:\Users\Ryan\Projects\RyanPenfold.SolutionMaker\net46\RyanPenfold.SolutionMaker.Core.Tests.Unit\bin\Debug\RyanPenfold.SolutionMaker.Core.Tests.Unit.dll
+D:\Users\Ryan\Projects\RyanPenfold.SolutionMaker\net46\RyanPenfold.SolutionMaker.Core.Tests.Unit\bin\Debug\RyanPenfold.SolutionMaker.Core.Tests.Unit.pdb
+D:\Users\Ryan\Projects\RyanPenfold.SolutionMaker\net46\RyanPenfold.SolutionMaker.Core.Tests.Unit\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+D:\Users\Ryan\Projects\RyanPenfold.SolutionMaker\net46\RyanPenfold.SolutionMaker.Core.Tests.Unit\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.xml
+D:\Users\Ryan\Projects\RyanPenfold.SolutionMaker\net46\RyanPenfold.SolutionMaker.Core.Tests.Unit\obj\Debug\RyanPenfold.SolutionMaker.Core.Tests.Unit.dll
+D:\Users\Ryan\Projects\RyanPenfold.SolutionMaker\net46\RyanPenfold.SolutionMaker.Core.Tests.Unit\obj\Debug\RyanPenfold.SolutionMaker.Core.Tests.Unit.pdb
+D:\Users\Ryan\Projects\solution-maker\net45\RyanPenfold.SolutionMaker.Core.Tests.Unit\bin\Debug\RyanPenfold.SolutionMaker.Core.Tests.Unit.dll
+D:\Users\Ryan\Projects\solution-maker\net45\RyanPenfold.SolutionMaker.Core.Tests.Unit\bin\Debug\RyanPenfold.SolutionMaker.Core.Tests.Unit.pdb
+D:\Users\Ryan\Projects\solution-maker\net45\RyanPenfold.SolutionMaker.Core.Tests.Unit\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+D:\Users\Ryan\Projects\solution-maker\net45\RyanPenfold.SolutionMaker.Core.Tests.Unit\obj\Debug\RyanPenfold.SolutionMaker.Core.Tests.Unit.dll
+D:\Users\Ryan\Projects\solution-maker\net45\RyanPenfold.SolutionMaker.Core.Tests.Unit\obj\Debug\RyanPenfold.SolutionMaker.Core.Tests.Unit.pdb

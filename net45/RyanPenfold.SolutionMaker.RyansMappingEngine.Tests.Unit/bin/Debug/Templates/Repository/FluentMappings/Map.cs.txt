@@ -1,0 +1,20 @@
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="{fileName}" company="{companyName}">
+//   Copyright © {companyName}. All Rights Reserved.
+// </copyright>
+// --------------------------------------------------------------------------------------------------------------------
+
+{startNamespace}{usings}
+    /// <summary>
+    /// Defines a mapping for type <see cref="{className}"/>.
+    /// </summary>
+    public class {className}Map : BaseClassMap<{className}>
+    {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="{className}Map"/> class.
+        /// </summary>
+        public {className}Map()
+        {{fluentMappings}
+        }
+    }
+{endNamespace}

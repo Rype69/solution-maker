@@ -1,0 +1,16 @@
+Typenames can be keywords
+Namespaces get validated
+Template files
+Every SQL column type has a known corresponding .NET type.
+C#
+Visual Basic
+Stored procedure mappings
+If stored procedure mapped POCO types are specified in table or POCO mappings, the stored procedure mapping assumes that type.
+Can load model type from assembly
+Aware of VB.NET project-wide imports
+UI Settings are saved to file (in JSON)
+Subnamespaces
+
+Calls to stored procedures / table-valued functions in repositories
+It works out where to put stuff based on namespaces and directories.
+It can map to built-in types

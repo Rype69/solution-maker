@@ -1,0 +1,15 @@
+﻿' --------------------------------------------------------------------------------------------------------------------
+' <copyright file="{fileName}" company="{companyName}">
+'   Copyright © {companyName}. All Rights Reserved.
+' </copyright>
+' --------------------------------------------------------------------------------------------------------------------
+{usings}{startNamespace}
+''' <summary>
+''' Mapped from a database object.
+''' </summary>
+Public Class {className}
+
+	{properties}
+
+End Class
+{endNamespace}

@@ -1,0 +1,163 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{250026F1-5686-49A9-99F8-3CC61FCE1D60}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>RyanPenfold.SolutionMaker.RyansMappingEngine</RootNamespace>
+    <AssemblyName>RyanPenfold.SolutionMaker.RyansMappingEngine</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AutoMapper, Version=4.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.4.1.1\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Build" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\net45\RyanPenfold.SolutionMaker.RyansMappingEngine\FilePathManager.cs" />
+    <Compile Include="..\..\net45\RyanPenfold.SolutionMaker.RyansMappingEngine\FluentNHibernateMapping.cs" />
+    <Compile Include="..\..\net45\RyanPenfold.SolutionMaker.RyansMappingEngine\FluentNHibernateMappingEngine.cs" />
+    <Compile Include="..\..\net45\RyanPenfold.SolutionMaker.RyansMappingEngine\FluentNHibernateMappingFile.cs" />
+    <Compile Include="..\..\net45\RyanPenfold.SolutionMaker.RyansMappingEngine\FluentNHibernateRepositoryCodeFile.cs" />
+    <Compile Include="..\..\net45\RyanPenfold.SolutionMaker.RyansMappingEngine\FluentNHibernateRepositoryTestsCodeFile.cs" />
+    <Compile Include="..\..\net45\RyanPenfold.SolutionMaker.RyansMappingEngine\IFilePathManager.cs" />
+    <Compile Include="..\..\net45\RyanPenfold.SolutionMaker.RyansMappingEngine\IFluentNHibernateMapping.cs" />
+    <Compile Include="..\..\net45\RyanPenfold.SolutionMaker.RyansMappingEngine\IFluentNHibernateMappingFile.cs" />
+    <Compile Include="..\..\net45\RyanPenfold.SolutionMaker.RyansMappingEngine\IFluentNHibernateRepositoryCodeFile.cs" />
+    <Compile Include="..\..\net45\RyanPenfold.SolutionMaker.RyansMappingEngine\IFluentNHibernateRepositoryTestsCodeFile.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Templates\Model.Tests.Unit\ModelTests.cs.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\Model.Tests.Unit\ModelTests.vb.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\Model\Model.cs.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\Model\Model.vb.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\Model\RepositoryInterfaces\IRepository.cs.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\Model\RepositoryInterfaces\IRepository.vb.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\Model\ServiceInterfaces\IService.cs.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\Model\ServiceInterfaces\IService.vb.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\Repository.Tests.Integration\FluentMappings\MapTests.cs.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\Repository.Tests.Integration\FluentMappings\MapTests.vb.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\Repository.Tests.Integration\RepositoryTests.cs.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\Repository.Tests.Integration\RepositoryTests.vb.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\Repository.Tests.Integration\RepositoryTests_TableViewTestsSection.cs.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\Repository.Tests.Integration\RepositoryTests_TableViewTestsSection.vb.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\Repository\FluentMappings\Map.cs.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\Repository\FluentMappings\Map.vb.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\Repository\Repository.cs.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\Repository\Repository.vb.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\Service.Tests.Unit\ServiceTests.cs.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\Service.Tests.Unit\ServiceTests.vb.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\Service\Service.cs.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\Service\Service.vb.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\ioc-container\net46\RyanPenfold.IocContainer\RyanPenfold.IocContainer.csproj">
+      <Project>{ee5b1ca8-4a1e-4a62-be0d-d37dc026896d}</Project>
+      <Name>RyanPenfold.IocContainer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\utilities\net46\RyanPenfold.Utilities.Data\RyanPenfold.Utilities.Data.csproj">
+      <Project>{b3388100-8b67-4ff9-bba0-d89c0419503e}</Project>
+      <Name>RyanPenfold.Utilities.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\utilities\net46\RyanPenfold.Utilities\RyanPenfold.Utilities.csproj">
+      <Project>{6b248f86-cc97-49f6-96f2-9200707544a4}</Project>
+      <Name>RyanPenfold.Utilities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RyanPenfold.SolutionMaker.Core\RyanPenfold.SolutionMaker.Core.csproj">
+      <Project>{4eb6506d-1068-4998-9266-b670a10828ff}</Project>
+      <Name>RyanPenfold.SolutionMaker.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

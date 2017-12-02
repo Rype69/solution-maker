@@ -1,0 +1,220 @@
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="Mapping.cs" company="Inspire IT Ltd">
+//   Copyright © Ryan Penfold. All Rights Reserved.
+// </copyright>
+// --------------------------------------------------------------------------------------------------------------------
+
+namespace RyanPenfold.SolutionMaker.Core
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+
+    /// <summary>
+    /// Defines a mapping between a source schema, such as a database object, 
+    /// and a proposed CLR type
+    /// </summary>.
+    public class Mapping : IMapping
+    {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Mapping"/> class.
+        /// </summary>
+        /// <param name="id">An identifier to assign to the <see cref="Mapping"/>.</param>
+        public Mapping(Guid id)
+        {
+            this.Id = id;
+            this.CodeFileStringReplacements = new Dictionary<string, string>();
+            this.MappedProperties = new List<IMappedProperty>();
+            this.SqlParameters = new SqlParameterCollection();
+        }
+
+        #region Properties relevant to the UI
+
+        /// <summary>
+        /// Gets the identifier of the <see cref="Mapping"/>.
+        /// </summary>
+        public Guid Id { get; }
+
+        /// <summary>
+        /// Gets or sets a value denoting the type of mapping.
+        /// </summary>
+        public MappingType Type { get; set; }
+
+        /// <summary>
+        /// Gets or sets the source of the <see cref="Mapping"/>
+        /// </summary>
+        public string Source { get; set; }
+
+        /// <summary>
+        /// Gets or sets the fully qualified name of the proposed type, including the namespace.
+        /// </summary>
+        public string ProposedTypeFullName { get; set; }
+
+        /// <summary>
+        /// Gets or sets any parameters for a stored procedure / function mapping.
+        /// </summary>
+        public string Parameters => this.SqlParameters.ToString();
+
+        #endregion
+
+        /// <summary>
+        /// Gets or sets the set of string replacements to make 
+        /// when producing files from templates.
+        /// </summary>
+        public IDictionary<string, string> CodeFileStringReplacements { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether a create object SQL file 
+        /// been produced for the <see cref="ProposedTypeName"/>.
+        /// </summary>
+        public bool CreateSqlObjectFileProduced { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether a drop object SQL file 
+        /// been produced for the <see cref="ProposedTypeName"/>.
+        /// </summary>
+        public bool DropSqlObjectFileProduced { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether a FluentNHibernate mapping file 
+        /// been produced for the <see cref="ProposedTypeName"/>.
+        /// </summary>
+        public bool FluentNHibernateMappingFileProduced { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether a FluentNHibernate mapping tests file 
+        /// been produced for the <see cref="ProposedTypeName"/>.
+        /// </summary>
+        public bool FluentNHibernateMappingTestsFileProduced { get; set; }
+
+        /// <summary>
+        /// Gets or sets the set of properties to map.
+        /// </summary>
+        public IList<IMappedProperty> MappedProperties { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether an NHibernate mapping file has 
+        /// been produced for the <see cref="ProposedTypeName"/>.
+        /// </summary>
+        public bool NHibernateMappingFileProduced { get; set; }
+
+        /// <summary>
+        /// Gets or sets any parameters for a stored procedure / function mapping.
+        /// </summary>
+        public ISqlParameterCollection SqlParameters { get; set; }
+
+        /// <summary>
+        /// Gets or sets the absolute file path to a produced POCO code file.
+        /// </summary>
+        public string PocoCodeFilePath { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether a POCO code file has 
+        /// been produced for the <see cref="ProposedTypeName"/>.
+        /// </summary>
+        public bool PocoCodeFileProduced { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether a POCO unit tests code file has 
+        /// been produced for the <see cref="ProposedTypeName"/>.
+        /// </summary>
+        public bool PocoUnitTestsCodeFileProduced { get; set; }
+
+        /// <summary>
+        /// Gets or sets the namespace of the project to which the POCO type of this mapping belongs.
+        /// </summary>
+        public string ProjectRootNamespace { get; set; }
+
+        /// <summary>
+        /// Gets the name of the proposed type, derived from the <see cref="ProposedTypeFullName"/>.
+        /// </summary>
+        public string ProposedTypeName => this.ProposedTypeFullName.Split(new[] { '.' }, StringSplitOptions.RemoveEmptyEntries).Last();
+
+        /// <summary>
+        /// Gets the name of the proposed type, including the namespace, derived from the <see cref="ProposedTypeFullName"/>.
+        /// </summary>
+        public string ProposedTypeNamespace => !string.IsNullOrWhiteSpace(this.ProposedTypeFullName) && this.ProposedTypeFullName.Contains(".")
+                                                   ? this.ProposedTypeFullName.Substring(0, this.ProposedTypeFullName.LastIndexOf(".", StringComparison.Ordinal))
+                                                   : string.Empty;
+
+        /// <summary>
+        /// Gets or sets a value indicating whether a repository code file has 
+        /// been produced for the <see cref="ProposedTypeName"/>.
+        /// </summary>
+        public bool RepositoryCodeFileProduced { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether a repository interface code file has 
+        /// been produced for the <see cref="ProposedTypeName"/>.
+        /// </summary>
+        public bool RepositoryInterfaceCodeFileProduced { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether a repository integration tests code file has 
+        /// been produced for the <see cref="ProposedTypeName"/>.
+        /// </summary>
+        public bool RepositoryIntegrationTestsCodeFileProduced { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether a service code file has 
+        /// been produced for the <see cref="ProposedTypeName"/>.
+        /// </summary>
+        public bool ServiceCodeFileProduced { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether a service interface code file has 
+        /// been produced for the <see cref="ProposedTypeName"/>.
+        /// </summary>
+        public bool ServiceInterfaceCodeFileProduced { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether a service unit tests code file has 
+        /// been produced for the <see cref="ProposedTypeName"/>.
+        /// </summary>
+        public bool ServiceUnitTestsCodeFileProduced { get; set; }
+
+        /// <summary>
+        /// Gets the name of the source object of the mapping.
+        /// </summary>
+        public string SourceObjectName
+        {
+            get
+            {
+                if (string.IsNullOrWhiteSpace(this.Source) || !this.Source.Contains(" "))
+                {
+                    return null;
+                }
+
+                var objectSchemaAndName = this.Source.Split(new[] { " " }, StringSplitOptions.RemoveEmptyEntries).Last();
+                if (objectSchemaAndName == null || !objectSchemaAndName.Contains("."))
+                {
+                    return null;
+                }
+
+                return objectSchemaAndName.Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries).Last();
+            }
+        }
+
+        /// <summary>
+        /// Gets the schema of the source object of the mapping.
+        /// </summary>
+        public string SourceObjectSchema
+        {
+            get
+            {
+                if (string.IsNullOrWhiteSpace(this.Source) || !this.Source.Contains(" "))
+                {
+                    return null;
+                }
+
+                var objectSchemaAndName = this.Source.Split(new[] { " " }, StringSplitOptions.RemoveEmptyEntries).Last();
+                if (objectSchemaAndName == null || !objectSchemaAndName.Contains("."))
+                {
+                    return null;
+                }
+
+                return objectSchemaAndName.Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries).First();
+            }
+        }
+    }
+}

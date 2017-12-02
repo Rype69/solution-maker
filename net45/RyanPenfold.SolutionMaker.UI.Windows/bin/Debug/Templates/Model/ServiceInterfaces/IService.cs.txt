@@ -1,0 +1,46 @@
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="{fileName}" company="{companyName}">
+//     Copyright © {companyName}. All rights reserved.
+// </copyright>
+// --------------------------------------------------------------------------------------------------------------------
+
+{startNamespace}{usings}
+    /// <summary>
+    /// Provides an interface for functionality relating to <see cref="{className}" /> object-oriented business logic.
+    /// </summary>
+    public interface I{className}Service
+    {
+        /// <summary>
+        /// Finds all of the <see cref="{className}" /> objects in a repository.
+        /// </summary>
+        /// <returns>A <see cref="IList{{className}}" /> object</returns>.
+        IList<{className}> FindAll();
+
+        /// <summary>
+        /// Attempts to find a <see cref="{className}"/> object with the specified identifier.
+        /// </summary>
+        /// <param name="id">
+        /// The identifier of a <see cref="{className}"/> object to find. 
+        /// </param>
+        /// <returns>
+        /// A <see cref="{className}"/> object if found, otherwise null.
+        /// </returns>
+        {className} FindById(object id);
+
+        /// <summary>
+        /// Removes a <see cref="{className}"/> object from a repository.
+        /// </summary>
+        /// <param name="entity">
+        /// The entity to remove.
+        /// </param>
+        void Remove({className} entity);
+
+        /// <summary>
+        /// Saves a <see cref="{className}"/> object to a repository.
+        /// </summary>
+        /// <param name="entity">
+        /// The entity to save.
+        /// </param>
+        void Save({className} entity);       
+    }
+{endNamespace}

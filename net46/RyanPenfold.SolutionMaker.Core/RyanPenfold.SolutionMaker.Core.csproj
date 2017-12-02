@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{4EB6506D-1068-4998-9266-B670A10828FF}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>RyanPenfold.SolutionMaker.Core</RootNamespace>
+    <AssemblyName>RyanPenfold.SolutionMaker.Core</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Build" />
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\net45\RyanPenfold.SolutionMaker.Core\CodeFile.cs" />
+    <Compile Include="..\..\net45\RyanPenfold.SolutionMaker.Core\CSharpCodeFactory.cs" />
+    <Compile Include="..\..\net45\RyanPenfold.SolutionMaker.Core\CSharpUsingDirectiveCollection.cs" />
+    <Compile Include="..\..\net45\RyanPenfold.SolutionMaker.Core\ICodeFactory.cs" />
+    <Compile Include="..\..\net45\RyanPenfold.SolutionMaker.Core\ICodeFile.cs" />
+    <Compile Include="..\..\net45\RyanPenfold.SolutionMaker.Core\IMappedProperty.cs" />
+    <Compile Include="..\..\net45\RyanPenfold.SolutionMaker.Core\IMapping.cs" />
+    <Compile Include="..\..\net45\RyanPenfold.SolutionMaker.Core\IMappingCollection.cs" />
+    <Compile Include="..\..\net45\RyanPenfold.SolutionMaker.Core\IMappingEngine.cs" />
+    <Compile Include="..\..\net45\RyanPenfold.SolutionMaker.Core\IO\ISerializedDataFile.cs" />
+    <Compile Include="..\..\net45\RyanPenfold.SolutionMaker.Core\IO\ISettingsFile.cs" />
+    <Compile Include="..\..\net45\RyanPenfold.SolutionMaker.Core\IO\SerializedDataFile.cs" />
+    <Compile Include="..\..\net45\RyanPenfold.SolutionMaker.Core\IO\SettingsFile.cs" />
+    <Compile Include="..\..\net45\RyanPenfold.SolutionMaker.Core\IProjectItemFile.cs" />
+    <Compile Include="..\..\net45\RyanPenfold.SolutionMaker.Core\ISettingsInfo.cs" />
+    <Compile Include="..\..\net45\RyanPenfold.SolutionMaker.Core\ISqlParameter.cs" />
+    <Compile Include="..\..\net45\RyanPenfold.SolutionMaker.Core\ISqlParameterCollection.cs" />
+    <Compile Include="..\..\net45\RyanPenfold.SolutionMaker.Core\ITestsCodeFile.cs" />
+    <Compile Include="..\..\net45\RyanPenfold.SolutionMaker.Core\IUsingDirectiveCollection.cs" />
+    <Compile Include="..\..\net45\RyanPenfold.SolutionMaker.Core\Language.cs" />
+    <Compile Include="..\..\net45\RyanPenfold.SolutionMaker.Core\ListExtensions.cs" />
+    <Compile Include="..\..\net45\RyanPenfold.SolutionMaker.Core\MappedProperty.cs" />
+    <Compile Include="..\..\net45\RyanPenfold.SolutionMaker.Core\Mapping.cs" />
+    <Compile Include="..\..\net45\RyanPenfold.SolutionMaker.Core\MappingCollection.cs" />
+    <Compile Include="..\..\net45\RyanPenfold.SolutionMaker.Core\MappingEngine.cs" />
+    <Compile Include="..\..\net45\RyanPenfold.SolutionMaker.Core\MappingType.cs" />
+    <Compile Include="..\..\net45\RyanPenfold.SolutionMaker.Core\ProjectItemFile.cs" />
+    <Compile Include="..\..\net45\RyanPenfold.SolutionMaker.Core\ProjectItemType.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="..\..\net45\RyanPenfold.SolutionMaker.Core\SettingsInfo.cs" />
+    <Compile Include="..\..\net45\RyanPenfold.SolutionMaker.Core\SqlParameter.cs" />
+    <Compile Include="..\..\net45\RyanPenfold.SolutionMaker.Core\SqlParameterCollection.cs" />
+    <Compile Include="..\..\net45\RyanPenfold.SolutionMaker.Core\TestsCodeFile.cs" />
+    <Compile Include="..\..\net45\RyanPenfold.SolutionMaker.Core\VisualBasicCodeFactory.cs" />
+    <Compile Include="..\..\net45\RyanPenfold.SolutionMaker.Core\VisualBasicImportsStatementCollection.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\net45\RyanPenfold.SolutionMaker.Core\IMapping.cs.original" />
+    <None Include="..\..\net45\RyanPenfold.SolutionMaker.Core\Mapping.cs.original" />
+    <None Include="..\..\net45\RyanPenfold.SolutionMaker.Core\packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\..\net45\RyanPenfold.SolutionMaker.Core\Keywords.cs.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\net45\RyanPenfold.SolutionMaker.Core\Keywords.vb.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\ioc-container\net46\RyanPenfold.IocContainer\RyanPenfold.IocContainer.csproj">
+      <Project>{ee5b1ca8-4a1e-4a62-be0d-d37dc026896d}</Project>
+      <Name>RyanPenfold.IocContainer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\utilities\net46\RyanPenfold.Utilities.Data\RyanPenfold.Utilities.Data.csproj">
+      <Project>{b3388100-8b67-4ff9-bba0-d89c0419503e}</Project>
+      <Name>RyanPenfold.Utilities.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\utilities\net46\RyanPenfold.Utilities\RyanPenfold.Utilities.csproj">
+      <Project>{6b248f86-cc97-49f6-96f2-9200707544a4}</Project>
+      <Name>RyanPenfold.Utilities</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

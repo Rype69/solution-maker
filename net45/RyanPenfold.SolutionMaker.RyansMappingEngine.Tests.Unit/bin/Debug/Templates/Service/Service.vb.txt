@@ -1,0 +1,90 @@
+﻿' --------------------------------------------------------------------------------------------------------------------
+' <copyright file="{className}Service.vb" company="{companyName}">
+'     Copyright © {companyName}. All rights reserved.
+' </copyright>
+' --------------------------------------------------------------------------------------------------------------------
+{usings}{startNamespace}
+''' <summary>
+''' Provides functionality relating to <see cref="{className}" /> object-oriented business logic.
+''' </summary>
+Public Class {className}Service
+    Implements I{className}Service
+
+    ''' <summary>
+    ''' A repository of <see cref="{className}" /> objects.
+    ''' </summary>
+    Private ReadOnly _{classNameLowerCaseFirstLetter}Repository As I{className}Repository
+
+    ''' <summary>
+    ''' Initializes a new instance of the <see cref="{className}Service" /> class.
+    ''' </summary>
+    Public Sub New()
+        Me.New(Resolver.Resolve(Of I{className}Repository)())
+    End Sub
+
+    ''' <summary>
+    ''' Initializes a new instance of the <see cref="{className}Service" /> class.
+    ''' </summary>
+    ''' <param name="{classNameLowerCaseFirstLetter}Repository">A repository of <see cref="{className}" /> objects.</param>
+    Public Sub New({classNameLowerCaseFirstLetter}Repository As I{className}Repository)
+        _{classNameLowerCaseFirstLetter}Repository = {classNameLowerCaseFirstLetter}Repository
+    End Sub
+
+    ''' <summary>
+    ''' Finds all of the <see cref="{className}" /> objects in a repository.
+    ''' </summary>
+    ''' <returns>A <see cref="IList(Of {className})" /> object</returns>
+    Public Function FindAll() As IList(Of {className}) Implements I{className}Service.FindAll
+        Return _{classNameLowerCaseFirstLetter}Repository.FindAll()
+    End Function
+
+    ''' <summary>
+    ''' Finds a <see cref="{className}" /> object with the specified identifier.
+    ''' </summary>
+    ''' <param name="id">The id of the object to find</param>
+    ''' <returns>A <see cref="{className}" /> object</returns>
+    Public Function FindById(id As Object) As {className} Implements I{className}Service.FindById
+        Return _{classNameLowerCaseFirstLetter}Repository.FindById(id)
+    End Function
+
+    ''' <summary>
+    ''' Removes a <see cref="{className}" /> object from a repository.
+    ''' </summary>
+    ''' <param name="subject">The object to remove</param>
+    Public Sub Remove(subject As {className}) Implements I{className}Service.Remove
+
+        If subject Is Nothing Then
+            Throw New ArgumentNullException("subject")
+        End If
+
+        Try
+            _{classNameLowerCaseFirstLetter}Repository.Remove(subject)
+        Catch e As System.Exception
+            Dim id = "[Unknown]"
+
+            Dim [property] = subject.[GetType]().GetProperties().FirstOrDefault(Function(p) String.Equals(p.Name, "Id", StringComparison.InvariantCultureIgnoreCase))
+            If [property] IsNot Nothing AndAlso [property].CanWrite Then
+                Dim value = [property].GetValue(subject)
+                If value IsNot Nothing Then
+                    id = value.ToString()
+                End If
+            End If
+
+            Throw New CannotRemoveException(String.Format("Cannot remove {0} with Id #{1}", subject.GetType().Name, id), e)
+        End Try
+    End Sub
+
+    ''' <summary>
+    ''' Saves a <see cref="{className}" /> object to a repository.
+    ''' </summary>
+    ''' <param name="subject">The object to save</param>
+    Public Sub Save(subject As {className}) Implements I{className}Service.Save
+        If subject.Id = Guid.Empty
+            subject.Id = New Guid(_{classNameLowerCaseFirstLetter}Repository.NewId("Id"))
+        End If
+
+        _{classNameLowerCaseFirstLetter}Repository.Save(subject)
+    End Sub
+
+End Class
+{endNamespace}

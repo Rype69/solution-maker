@@ -1,0 +1,36 @@
+Upper and lower bounds of each SQL datatype 29th October 2015
+(where the length of each column is the absolute minimum)
+
+bigint				minimum	long.MinValue -9223372036854775808 maximum long.MaxValue 9223372036854775807
+bit					minimum 0 maximum infinity it would seem. Any positive numeric value including 9223372036854775808 is accepted but translated to 1.
+binary				System.Byte[] where the length of the array cannot exceed the length of the column.
+char				minimum char.MinValue \u0 maximum char.MaxValue \uffff
+date				minimum 0001-01-01 DateTime.MinValue maximum 9999-12-31 DateTime.MaxValue (doesn't have HH:mm:ss.xxxx) accuracy 1 day. Mapping requires CustomType("date")
+datetime			minimum 1753-01-01 DateTime.MinValue maximum 9999-12-31 DateTime.MaxValue accuracy 0.00333 second
+datetime2			minimum 0001-01-01 00:00:00.0 DateTime.MinValue maximum 9999-12-31 23:59:59.9 DateTime.MaxValue SqlDbType.DateTime2 needs to be explicitly set as the parameter type, otherwise it treats it as datetime. Mapping requires CustomType("datetime2")
+datetimeoffset		minimum 0001-01-01 00:00:00.0 +00:00 DateTime.MinValue maximum 9999-12-31 23:59:59.9 +00:00 DateTime.MaxValue
+decimal				minimum -0.9 maximum 0.9. Any amount of decimal digits were accepted but rounded to just 1.
+float				minimum -1.79769313486232E+308 double.MinValue maximum 1.79769313486232E+308 double.MaxValue (SQL float == C# double & SQL real == C# float)
+geography			Allows the setting of new SqlGeography { STSrid = new SqlInt32(4326) } Expressed as 0xE61000000104000000000000000001000000FFFFFFFFFFFFFFFF07 Requires the UdtTypeName property of the parameter object to be set to "Geography".
+geometry			Allows the setting of new SqlGeometry { STSrid = new SqlInt32(4326) } Expressed as 0xE61000000104000000000000000001000000FFFFFFFFFFFFFFFF07 Requires the UdtTypeName property of the parameter object to be set to "Geography".
+hierarchyid			Allows the insertion of SqlHierarchyId.Parse("/1/1/") providing that the UdtTypeName property of the parameter object was set to "hierarchyid".
+image				System.Byte[] maximum length int.MaxValue 2147483647. When attempted to insert 2147483647 bytes, threw a System.OutOfMemoryException
+int					minimum int.MinValue -2147483648 maximum int.MaxValue 2147483647
+money				minimum -922337203685477.5808 maximum 922337203685477.5807
+nchar				System.String where the length of the string cannot exceed the length of the column.
+ntext				System.String
+numeric				minimum -0.9 maximum 0.9. Any amount of decimal digits were accepted but rounded to just 1.
+nvarchar			System.String where the length of the string cannot exceed the length of the column.
+real				minimum -3.402823E+38 float.MinValue maximum 3.402823E+38 float.MaxValue (SQL real == C# float & SQL float == C# double)
+smalldatetime		minimum 1900-01-01 through 2079-06-06 accuracy 1 minute
+smallint			minimum short.MinValue -32768 maximum smallint.MaxValue 32767
+smallmoney			minimum -214748.3648 maximum 214748.3647
+sql_variant			Allows thre insertion of the string "lorem". The AddWithValue method was used.
+text				System.String
+time				minimum 00:00:00.0000000 (rounds to 00:00:00.0) maximum 23:59:59.9999999 (rounds to 23:59:59.9)
+timestamp			can't insert explicit values into a timestamp column, default value only. Sample value: 0x00000000000007D1
+tinyint				minimum byte.MinValue 0 maximum byte.MaxValue 255
+uniqueidentifier	System.Guid
+varbinary			System.Byte[] where the length of the array cannot exceed the length of the column.
+varchar				System.String where the length of the string cannot exceed the length of the column.
+xml					Any System.String seems to work, even if it's invalid xml.

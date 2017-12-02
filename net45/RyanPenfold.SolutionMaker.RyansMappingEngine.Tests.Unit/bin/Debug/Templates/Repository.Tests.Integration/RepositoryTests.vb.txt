@@ -1,0 +1,14 @@
+﻿' --------------------------------------------------------------------------------------------------------------------
+' <copyright file="{fileName}" company="{companyName}">
+'   Copyright © {companyName}. All Rights Reserved.
+' </copyright>
+' --------------------------------------------------------------------------------------------------------------------
+{usings}{startNamespace}
+''' <summary>
+''' Provides integration tests for the <see cref="{className}Repository" /> class
+''' </summary>
+<TestClass>
+Public Class {className}RepositoryTests
+{tableViewTests}{storedProcedureFunctionTests}
+End Class
+{endNamespace}

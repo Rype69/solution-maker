@@ -1,0 +1,52 @@
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="{fileName}" company="{companyName}">
+//   Copyright © {companyName}. All Rights Reserved.
+// </copyright>
+// --------------------------------------------------------------------------------------------------------------------
+
+{startNamespace}{usings}
+    /// <summary>
+    /// Provides integration tests for the <see cref="{fluentMappingsNamespace}.{className}Map" /> type.
+    /// </summary>
+    [TestClass]
+    public class {className}MapTests
+    {
+        /// <summary>
+        /// The name of the connection string
+        /// </summary>
+        private const string ConnectionStringName = "IntegrationTests";
+
+        /// <summary>
+        /// Tests the constructor of the <see cref="{fluentMappingsNamespace}.{className}Map" /> type
+        /// </summary>
+        [TestMethod]
+        public void New_NoParameters_FieldsAreCorrectlyMapped()
+        {
+            try
+            {
+                // Drop the [{sourceObjectSchema}].[{sourceObjectName}] {tableOrViewToLower} if it exists already
+                Utilities.Data.SqlClient.SqlCommand.RunExecuteScalarFromManifestResource(this.GetType().Assembly, $"{this.GetType().Assembly.GetName().Name}.SQL.DROP {tableOrViewToUpper} [{sourceObjectSchema}].[{sourceObjectName}].sql", ConnectionStringName);
+
+                // Create the [{sourceObjectSchema}].[{sourceObjectName}] {tableOrViewToLower}
+                Utilities.Data.SqlClient.SqlCommand.RunExecuteScalarFromManifestResource(this.GetType().Assembly, $"{this.GetType().Assembly.GetName().Name}.SQL.CREATE {tableOrViewToUpper} [{sourceObjectSchema}].[{sourceObjectName}].sql", ConnectionStringName);
+
+                // Arrange
+                using (var session = new SessionFactory().GetNewSession())
+                {
+                    // Act & Assert
+                    var result = new PersistenceSpecification<{className}>(session)
+{tests}
+                        .VerifyTheMappings();
+
+                    // Assert
+                    Assert.IsNotNull(result);
+                }
+            }
+            finally
+            {
+                // Drop the [{sourceObjectSchema}].[{sourceObjectName}] {tableOrViewToLower} if it still exists
+                Utilities.Data.SqlClient.SqlCommand.RunExecuteScalarFromManifestResource(this.GetType().Assembly, $"{this.GetType().Assembly.GetName().Name}.SQL.DROP {tableOrViewToUpper} [{sourceObjectSchema}].[{sourceObjectName}].sql", ConnectionStringName);
+            }
+        }
+    }
+{endNamespace}

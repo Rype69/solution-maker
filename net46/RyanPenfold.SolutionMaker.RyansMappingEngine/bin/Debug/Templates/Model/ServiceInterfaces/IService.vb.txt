@@ -1,0 +1,35 @@
+﻿' --------------------------------------------------------------------------------------------------------------------
+' <copyright file="{fileName}" company="{companyName}">
+'     Copyright © {companyName}. All rights reserved.
+' </copyright>
+' --------------------------------------------------------------------------------------------------------------------
+{usings}{startNamespace}
+	''' <summary>
+	''' Provides an interface for functionality relating to <see cref="{className}" /> object-oriented business logic.
+	''' </summary>
+	Public Interface I{className}Service
+
+		''' <summary>
+		''' Finds all of the <see cref="{className}" /> objects in a repository.
+		''' </summary>
+		''' <returns>A <see cref="IList(Of {className})" /> object</returns>
+		Function FindAll() As IList(Of {className})
+
+		''' <summary>
+		''' Finds a <see cref="{className}" /> object with the specified identifier.
+		''' </summary>
+		''' <returns>A <see cref="{className}" /> object</returns>
+		Function FindById(id As Object) As {className}
+
+		''' <summary>
+		''' Removes a <see cref="{className}" /> object from a repository.
+		''' </summary>
+		Sub Remove(entity As {className})
+		
+		''' <summary>
+		''' Saves a <see cref="{className}" /> object to a repository.
+		''' </summary>
+		Sub Save(entity As {className})
+
+	End Interface
+{endNamespace}

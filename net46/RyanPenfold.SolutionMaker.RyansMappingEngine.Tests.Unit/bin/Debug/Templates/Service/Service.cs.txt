@@ -1,0 +1,96 @@
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="{fileName}" company="{companyName}">
+//   Copyright © {companyName}. All Rights Reserved.
+// </copyright>
+// --------------------------------------------------------------------------------------------------------------------
+
+{startNamespace}{usings}
+    /// <summary>
+    /// Provides functionality relating to <see cref="{className}" /> object-oriented business logic.
+    /// </summary>
+    public class {className}Service : I{className}Service
+    {
+        /// <summary>
+        /// The repository of <see cref="{className}" /> objects.
+        /// </summary>
+        private readonly I{className}Repository {classNameLowerCaseFirstLetter}Repository;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="{className}Service" /> class.
+        /// </summary>
+        public {className}Service() : this(Resolver.Resolve<I{className}Repository>())
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="{className}Service" /> class.
+        /// </summary>
+        /// <param name="{classNameLowerCaseFirstLetter}Repository">A repository of <see cref="{className}" /> objects.</param>
+        public {className}Service(I{className}Repository {classNameLowerCaseFirstLetter}Repository)
+        {
+            this.{classNameLowerCaseFirstLetter}Repository = {classNameLowerCaseFirstLetter}Repository;
+        }
+
+        /// <summary>
+        /// Finds all of the <see cref="{className}" /> objects in a repository.
+        /// </summary>
+        /// <returns>A <see cref="System.Collections.Generic.IList{{className}}" /> object</returns>
+        public IList<{className}> FindAll()
+        {
+            return this.{classNameLowerCaseFirstLetter}Repository.FindAll();
+        }
+
+        /// <summary>
+        /// Finds a <see cref="{className}" /> object with the specified identifier.
+        /// </summary>
+        /// <param name="id">The id of the object to find</param>
+        /// <returns>A <see cref="{className}" /> object</returns>
+        public {className} FindById(object id)
+        {
+            return this.{classNameLowerCaseFirstLetter}Repository.FindById(id);
+        }
+
+        /// <summary>
+        /// Removes a <see cref="{className}" /> object from a repository.
+        /// </summary>
+        /// <param name="subject">The object to remove</param>
+        public void Remove({className} subject)
+        {
+            if (subject == null)
+            {
+                throw new ArgumentNullException(nameof(subject));
+            }
+
+            try
+            {
+                this.{classNameLowerCaseFirstLetter}Repository.Remove(subject);
+            }
+            catch (System.Exception e)
+            {
+                var id = "[Unknown]";
+
+                var property = subject.GetType().GetProperties().FirstOrDefault(p => string.Equals(p.Name, "Id", StringComparison.InvariantCultureIgnoreCase));
+                if (property != null && property.CanWrite)
+                {
+                    id = property.GetValue(subject)?.ToString();
+                }
+
+                throw new CannotRemoveException($"Cannot remove {subject.GetType().Name} with Id #{id}", e);
+            }
+        }
+
+        /// <summary>
+        /// Saves a <see cref="{className}" /> object to a repository.
+        /// </summary>
+        /// <param name="subject">The object to save</param>
+        public void Save({className} subject)
+        {
+            if (subject.Id == Guid.Empty)
+            {
+                subject.Id = new Guid(this.{classNameLowerCaseFirstLetter}Repository.NewId("Id"));
+            }
+
+            this.{classNameLowerCaseFirstLetter}Repository.Save(subject);
+        }
+    }
+{endNamespace}

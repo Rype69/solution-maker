@@ -1,0 +1,11 @@
+binary			50		Setting for Length must be from 1 to 8000.
+char 			10		Setting for Length must be from 1 to 8000.
+datetime2		7		Setting for Scale must be from 0 to 7.
+datetimeoffset	7		Setting for Scale must be from 0 to 7.
+decimal			18,0	Setting for Precision must be from 1 to 38. Setting for Scale must be from 0 to 38.
+nchar			10		Setting for Length must be from 1 to 4000.
+numeric			18,0	Setting for Precision must be from 1 to 38. Setting for Scale must be from 0 to 38.
+nvarchar		50		Setting for Length must be from 1 to 4000.
+time			7		Setting for Scale must be from 0 to 7.
+varbinary		50		Setting for Length must be from 1 to 8000.
+varchar			50		Setting for Length must be from 1 to 8000.

@@ -1,0 +1,171 @@
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="IMapping.cs" company="Inspire IT Ltd">
+//   Copyright © Ryan Penfold. All Rights Reserved.
+// </copyright>
+// --------------------------------------------------------------------------------------------------------------------
+
+namespace RyanPenfold.SolutionMaker.Core
+{
+    using System;
+    using System.Collections.Generic;
+
+    /// <summary>
+    /// Provides an interface for types that define mappings between a source schema, 
+    /// such as a database object, and a proposed CLR type.
+    /// </summary>
+    public interface IMapping
+    {
+        #region Properties relevant to the UI
+
+        /// <summary>
+        /// Gets the identifier of the mapping.
+        /// </summary>
+        Guid Id { get; }
+
+        /// <summary>
+        /// Gets or sets a value denoting the type of mapping.
+        /// </summary>
+        MappingType Type { get; set; }
+
+        /// <summary>
+        /// Gets or sets the source of the <see cref="Mapping"/>
+        /// </summary>
+        string Source { get; set; }
+
+        /// <summary>
+        /// Gets or sets the fully qualified name of the proposed type, including the namespace.
+        /// </summary>
+        string ProposedTypeFullName { get; set; }
+
+        /// <summary>
+        /// Gets any parameters for a stored procedure / function mapping.
+        /// </summary>
+        string Parameters { get; }
+
+        #endregion
+
+        /// <summary>
+        /// Gets or sets the set of string replacements to make 
+        /// when producing files from templates.
+        /// </summary>
+        IDictionary<string, string> CodeFileStringReplacements { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether a create object SQL file 
+        /// been produced for the <see cref="ProposedTypeName"/>.
+        /// </summary>
+        bool CreateSqlObjectFileProduced { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether a drop object SQL file 
+        /// been produced for the <see cref="ProposedTypeName"/>.
+        /// </summary>
+        bool DropSqlObjectFileProduced { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether a FluentNHibernate mapping file 
+        /// been produced for the <see cref="ProposedTypeName"/>.
+        /// </summary>
+        bool FluentNHibernateMappingFileProduced { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether a FluentNHibernate mapping tests file 
+        /// been produced for the <see cref="ProposedTypeName"/>.
+        /// </summary>
+        bool FluentNHibernateMappingTestsFileProduced { get; set; }
+
+        /// <summary>
+        /// Gets or sets the set of properties to map.
+        /// </summary>
+        IList<IMappedProperty> MappedProperties { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether an NHibernate mapping file has 
+        /// been produced for the <see cref="ProposedTypeName"/>.
+        /// </summary>
+        bool NHibernateMappingFileProduced { get; set; }
+
+        /// <summary>
+        /// Gets or sets any parameters for a stored procedure / function mapping.
+        /// </summary>
+        ISqlParameterCollection SqlParameters { get; set; }
+
+        /// <summary>
+        /// Gets or sets the absolute file path to a produced POCO code file.
+        /// </summary>
+        string PocoCodeFilePath { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether a POCO code file has 
+        /// been produced for the <see cref="ProposedTypeName"/>.
+        /// </summary>
+        bool PocoCodeFileProduced { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether a POCO unit tests code file has 
+        /// been produced for the <see cref="ProposedTypeName"/>.
+        /// </summary>
+        bool PocoUnitTestsCodeFileProduced { get; set; }
+
+        /// <summary>
+        /// Gets or sets the namespace of the project to which the POCO type of this mapping belongs.
+        /// </summary>
+        string ProjectRootNamespace { get; set; }
+
+        /// <summary>
+        /// Gets the name of the proposed type, derived from the <see cref="ProposedTypeFullName"/>.
+        /// </summary>
+        string ProposedTypeName { get; }
+
+        /// <summary>
+        /// Gets the name of the proposed type, including the namespace, derived from the <see cref="ProposedTypeFullName"/>.
+        /// </summary>
+        string ProposedTypeNamespace { get; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether a repository code file has 
+        /// been produced for the <see cref="ProposedTypeName"/>.
+        /// </summary>
+        bool RepositoryCodeFileProduced { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether a repository interface code file has 
+        /// been produced for the <see cref="ProposedTypeName"/>.
+        /// </summary>
+        bool RepositoryInterfaceCodeFileProduced { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether a repository integration tests code file has 
+        /// been produced for the <see cref="ProposedTypeName"/>.
+        /// </summary>
+        bool RepositoryIntegrationTestsCodeFileProduced { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether a service code file has 
+        /// been produced for the <see cref="ProposedTypeName"/>.
+        /// </summary>
+        bool ServiceCodeFileProduced { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether a service interface code file has 
+        /// been produced for the <see cref="ProposedTypeName"/>.
+        /// </summary>
+        bool ServiceInterfaceCodeFileProduced { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether a service unit tests code file has 
+        /// been produced for the <see cref="ProposedTypeName"/>.
+        /// </summary>
+        bool ServiceUnitTestsCodeFileProduced { get; set; }
+
+        /// <summary>
+        /// Gets the name of the source object of the mapping.
+        /// </summary>
+        string SourceObjectName { get; }
+
+        /// <summary>
+        /// Gets the schema of the source object of the mapping.
+        /// </summary>
+        string SourceObjectSchema { get; }
+    }
+}

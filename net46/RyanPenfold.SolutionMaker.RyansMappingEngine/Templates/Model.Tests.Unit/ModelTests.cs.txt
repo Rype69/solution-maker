@@ -1,0 +1,15 @@
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="{fileName}" company="{companyName}">
+//   Copyright © {companyName}. All Rights Reserved.
+// </copyright>
+// --------------------------------------------------------------------------------------------------------------------
+
+{startNamespace}{usings}
+    /// <summary>
+    /// Provides unit tests for the <see cref="{className}" /> class.
+    /// </summary>
+    [TestClass]
+    public class {className}Tests
+    {{tests}
+    }
+{endNamespace}

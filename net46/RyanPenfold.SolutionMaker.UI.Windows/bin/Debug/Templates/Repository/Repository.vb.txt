@@ -1,0 +1,21 @@
+﻿' --------------------------------------------------------------------------------------------------------------------
+' <copyright file="{fileName}" company="{companyName}">
+'   Copyright © {companyName}. All Rights Reserved.
+' </copyright>
+' --------------------------------------------------------------------------------------------------------------------
+{usings}{startNamespace}
+''' <summary>
+''' Provides data access functionality relating to <see cref="{className}" /> objects.
+''' </summary>
+Public Class {className}Repository
+	Inherits BaseRepository(Of {className})
+	Implements I{className}Repository
+	
+		''' <summary>
+        ''' Initializes a new instance of the <see cref="{className}Repository"/> class.
+        ''' </summary>
+        Public {className}Repository() : base(IocContainer.Resolver.Resolve<{className}Map>())
+        End Sub{methods}
+
+End Class
+{endNamespace}

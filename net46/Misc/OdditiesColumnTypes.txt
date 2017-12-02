@@ -1,0 +1,48 @@
+Geography		Can insert 'POINT 0 0 4326)'
+				Can read if NULL
+				Cannot read if NOT NULL
+					NHibernate.Type.SerializationException("Could not deserialize a serializable property: ")
+					System.Runtime.Serialization.SerializationException("Binary stream '0' does not contain a valid BinaryHeader. Possible causes are invalid stream or object version change between serialization and deserialization.")
+				Can write if NULL
+				Cannot write if NOT NULL
+					NHibernate.Exceptions.GenericADOException("could not execute batch command.[SQL: SQL not available]")
+					System.Data.SqlClient.SqlException("A .NET Framework error occurred during execution of user-defined routine or aggregate "geography")
+					System.ArgumentException("24204: The spatial reference identifier (SRID) is not valid. The specified SRID must match one of the supported SRIDs displayed in the sys.spatial_reference_systems catalog view.")
+							
+Geometry		Can insert 'POINT 0 0 4326)'
+				Can read if NULL
+				Cannot read if NOT NULL
+					NHibernate.Type.SerializationException("Could not deserialize a serializable property: ")
+					System.Runtime.Serialization.SerializationException("Binary stream '0' does not contain a valid BinaryHeader. Possible causes are invalid stream or object version change between serialization and deserialization.")
+				Can write if NULL
+				Cannot write if NOT NULL
+					NHibernate.Exceptions.GenericADOException("could not execute batch command.[SQL: SQL not available]")
+					System.Data.SqlClient.SqlException("A .NET Framework error occurred during execution of user-defined routine or aggregate "geometry)
+				Install the Nuget package NHibernate.Spatial.Mssql in the model and repository projects
+				Set the dialect attribute value to NHibernate.Spatial.Dialect.MsSql2012GeometryDialect, NHibernate.Spatial.MsSql (in the nhibernateRepository config)
+				Set the custom type in the column mapping to .CustomType(typeof(NHibernate.Spatial.Type.GeometryType));
+				Set the property type on the POCO to an appropriate type such as NetTopologySuite.Geometries.Point
+				
+HierarchyId		Can insert '/1/1/'
+				Can read if NULL
+				Cannot read if NOT NULL
+					NHibernate.Type.SerializationException("Could not deserialize a serializable property: ")
+					System.Runtime.Serialization.SerializationException("End of Stream encountered before parsing was completed.")
+				Can write if NULL
+				Cannot write if NOT NULL
+					NHibernate.PropertyValueException("Error dehydrating property value for RyanPenfold.TestProject.Model.Bar.HierarchyIdColumn")
+					NHibernate.Type.SerializationException("Could not serialize a serializable property: ")
+					System.Runtime.Serialization.SerializationException("Type 'Microsoft.SqlServer.Types.SqlHierarchyId' in Assembly 'Microsoft.SqlServer.Types, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91' is not marked as serializable.")
+				
+Sql_Variant		Can insert any string
+				Can read if NULL
+				Can read string "BLAH!"
+				Can write if NULL
+				Can write string "BLAH!", "BLAH2!"
+
+Timestamp		Can insert DEFAULT
+				Column always has a value even if NULL is inserted.
+				Can read			
+				Cannot write
+					NHibernate.Exceptions.GenericADOException("could not execute batch command.[SQL: SQL not available]")
+					System.Data.SqlClient.SqlException("Cannot update a timestamp column.")

@@ -1,0 +1,14 @@
+﻿' --------------------------------------------------------------------------------------------------------------------
+' <copyright file="{fileName}" company="{companyName}">
+'   Copyright © {companyName}. All Rights Reserved.
+' </copyright>
+' --------------------------------------------------------------------------------------------------------------------
+{usings}{startNamespace}
+	''' <summary>
+	''' Provides an interface for functionality relating to the management of persistent <see cref="{className}" /> objects
+	''' </summary>
+	Public Interface I{className}Repository
+		Inherits IRepository(Of {className}){methods}
+
+	End Interface
+{endNamespace}

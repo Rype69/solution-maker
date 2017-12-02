@@ -1,0 +1,20 @@
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="{fileName}" company="{companyName}">
+//   Copyright © {companyName}. All Rights Reserved.
+// </copyright>
+// --------------------------------------------------------------------------------------------------------------------
+
+{startNamespace}{usings}
+    /// <summary>
+    /// Provides data access functionality relating to <see cref="{className}" /> objects.
+    /// </summary>
+    public class {className}Repository : BaseRepository<{className}>, I{className}Repository
+    {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="{className}Repository"/> class.
+        /// </summary>
+        public {className}Repository() : base(IocContainer.Resolver.Resolve<{className}Map>())
+        {
+        }{methods}
+    }
+{endNamespace}
